@@ -399,7 +399,7 @@ footer{background:var(--gray-900);color:rgba(255,255,255,.7);margin-top:56px}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-href="ninja-swirl.html">
       <div class="product-img" style="background:#f5f5f5;padding:0"><img src="https://i.ebayimg.com/images/g/pvAAAeSwNBlp7IdD/s-l1600.webp" style="width:100%;height:180px;object-fit:cover" alt="Ninja Swirl NC701EU"><span class="badge-bware">B-Ware</span><span class="badge-grade">Sehr gut</span><span class="wishlist">♡</span></div>
       <div class="product-info">
         <div class="product-brand">Ninja</div>
@@ -651,6 +651,14 @@ document.getElementById('checkoutBtn').addEventListener('click', checkout);
 
 document.querySelectorAll('.add-cart').forEach(btn=>{
   btn.addEventListener('click', function(){ addToCart(this); });
+});
+
+// Product card navigation
+document.querySelectorAll('.product-card[data-href]').forEach(card=>{
+  card.addEventListener('click',function(e){
+    if(e.target.closest('.add-cart')||e.target.closest('.wishlist')) return;
+    window.location.href = this.dataset.href;
+  });
 });
 
 // Wishlist toggle
