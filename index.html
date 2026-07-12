@@ -292,7 +292,7 @@ footer{background:#111;border-top:1px solid #222}
 <!-- HEADER -->
 <header>
   <div class="header-main">
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       <div class="logo-mark">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
@@ -322,12 +322,12 @@ footer{background:#111;border-top:1px solid #222}
   <div class="nav-inner">
     <a href="#" class="nav-link active">Alle Kategorien</a>
     
-    <a href="#" class="nav-link">💻 Laptops & PCs</a>
-    <a href="#" class="nav-link">🍳 Küchengeräte</a>
-    <a href="#" class="nav-link">📺 TV & Audio</a>
-    <a href="#" class="nav-link">⌚ Wearables</a>
-    <a href="#" class="nav-link">🏠 Haushalt</a>
-    <a href="#" class="nav-link">🎮 Gaming</a>
+    <a href="#produkte" class="nav-link">🧊 Slush & Eis</a>
+    <a href="#produkte" class="nav-link">🍟 Luftfritteusen</a>
+    <a href="#produkte" class="nav-link">💨 Haarpflege</a>
+    <a href="#produkte" class="nav-link">🧹 Staubsauger</a>
+    <a href="#produkte" class="nav-link">🧃 Küche & Saft</a>
+    <a href="#produkte" class="nav-link">🔥 Alle Angebote</a>
     <a href="#" class="nav-link hot">🔥 Mega-Deals</a>
   </div>
 </div>
@@ -340,8 +340,8 @@ footer{background:#111;border-top:1px solid #222}
       <h1>Geprüft.<br>Günstig.<br><span>Mr.7even.</span></h1>
       <p class="hero-sub">Markengeräte zu Tiefstpreisen — von Mr.7even persönlich geprüft, gereinigt und mit Garantie.</p>
       <div class="hero-actions">
-        <a href="#" class="btn-primary">Jetzt stöbern →</a>
-        <a href="#" class="btn-outline">Wie funktioniert B-Ware?</a>
+        <a href="#produkte" class="btn-primary">Jetzt stöbern →</a>
+        <a href="#zustand" class="btn-outline">Wie funktioniert B-Ware?</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="val">100%</div><div class="lbl">Geprüft & gereinigt</div></div>
@@ -393,7 +393,7 @@ footer{background:#111;border-top:1px solid #222}
 <div class="section">
   <div class="section-head">
     <h2 class="section-title">Kategorien entdecken</h2>
-    <a href="#" class="section-link">Alle anzeigen →</a>
+    <a href="#produkte" class="section-link">Alle anzeigen →</a>
   </div>
   <div class="cat-grid">
     <div class="cat-card"><div class="cat-icon">🧊</div><div class="cat-name">Slush & Eismaschinen</div><div class="cat-count">Ninja</div></div>
@@ -408,10 +408,10 @@ footer{background:#111;border-top:1px solid #222}
 </div>
 
 <!-- PRODUKTE -->
-<div class="section" style="padding-top:0">
+<div class="section" id="produkte" style="padding-top:0">
   <div class="section-head">
     <h2 class="section-title">Top Angebote heute</h2>
-    <a href="#" class="section-link">Alle Angebote →</a>
+    <a href="#produkte" class="section-link">Alle Angebote →</a>
   </div>
   <div class="product-grid">
 
@@ -555,20 +555,20 @@ footer{background:#111;border-top:1px solid #222}
 <div class="deal-section">
   <div class="deal-inner">
     <div class="deal-left">
-      <h2>⚡ Flash-Deal des Tages</h2>
-      <p>Nur heute — bis zu 70% Rabatt auf ausgewählte Produkte</p>
+      <h2>⚡ Geprüfte B-Ware — fair &amp; günstig</h2>
+      <p>Jedes Gerät persönlich geprüft & gereinigt. Kostenloser Versand, 30 Tage Rückgabe.</p>
     </div>
-    <div class="deal-timer" id="timer">
-      <div class="timer-unit"><div class="t-num" id="th">00</div><div class="t-lbl">Std</div></div>
-      <div class="timer-unit"><div class="t-num" id="tm">00</div><div class="t-lbl">Min</div></div>
-      <div class="timer-unit"><div class="t-num" id="ts">00</div><div class="t-lbl">Sek</div></div>
+    <div class="deal-timer">
+      <div class="timer-unit"><div class="t-num">0€</div><div class="t-lbl">Versand</div></div>
+      <div class="timer-unit"><div class="t-num">30</div><div class="t-lbl">Tage Rückgabe</div></div>
+      <div class="timer-unit"><div class="t-num">4–5</div><div class="t-lbl">Werktage</div></div>
     </div>
-    <a href="#" class="deal-cta">Alle Deals ansehen →</a>
+    <a href="#produkte" class="deal-cta">Zu den Angeboten →</a>
   </div>
 </div>
 
 <!-- CONDITION GUIDE -->
-<div class="cond-section">
+<div class="cond-section" id="zustand">
   <div class="section">
     <div class="section-head">
       <h2 class="section-title">Unser Zustandsguide</h2>
@@ -609,21 +609,21 @@ footer{background:#111;border-top:1px solid #222}
     <div class="footer-col">
       <h4>Shop</h4>
       <ul>
-        <li><a href="#">Alle Produkte</a></li>
-        <li><a href="#">Angebote</a></li>
-        <li><a href="#">Neu eingetroffen</a></li>
-        <li><a href="#">Bestseller</a></li>
-        <li><a href="#">Mega-Deals</a></li>
+        <li><a href="#produkte">Alle Produkte</a></li>
+        <li><a href="#produkte">Angebote</a></li>
+        <li><a href="#produkte">Neu eingetroffen</a></li>
+        <li><a href="#produkte">Bestseller</a></li>
+        <li><a href="#produkte">Mega-Deals</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Hilfe</h4>
       <ul>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Versand & Lieferung</a></li>
-        <li><a href="#">Rückgabe</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Kundendienst</a></li>
+        <li><a href="#zustand">B-Ware Guide</a></li>
+        <li><a href="agb.html">Versand & Lieferung</a></li>
+        <li><a href="widerruf.html">Rückgabe & Widerruf</a></li>
+        <li><a href="impressum.html">Kontakt</a></li>
+        <li><a href="impressum.html">Kundendienst</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -681,16 +681,7 @@ footer{background:#111;border-top:1px solid #222}
 
 <script>
 // Timer
-function updateTimer(){
-  const now=new Date(),end=new Date(now);
-  end.setHours(23,59,59,0);
-  const d=end-now;
-  const h=Math.floor(d/3600000),m=Math.floor((d%3600000)/60000),s=Math.floor((d%60000)/1000);
-  document.getElementById('th').textContent=String(h).padStart(2,'0');
-  document.getElementById('tm').textContent=String(m).padStart(2,'0');
-  document.getElementById('ts').textContent=String(s).padStart(2,'0');
-}
-updateTimer();setInterval(updateTimer,1000);
+
 
 // Cart
 const cart={};
