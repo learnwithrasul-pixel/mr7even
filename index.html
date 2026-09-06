@@ -240,6 +240,9 @@ footer{background:#111;border-top:1px solid #222}
 /* ── PARTNER EMPFEHLUNG ── */
 .ad-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px}
 .partner-card{display:grid;grid-template-columns:300px 1fr;border:1px solid var(--gray-200);border-radius:var(--radius-md);overflow:hidden;background:#fff;transition:all .2s;cursor:pointer}
+/* Ohne Produktbild: eine Spalte, damit keine leere Fläche entsteht. */
+.partner-card.no-img{grid-template-columns:1fr}
+.partner-card + .partner-card{margin-top:16px}
 .partner-card:hover{box-shadow:var(--shadow-md);border-color:var(--black)}
 .partner-img{background:var(--gray-50);display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
 .partner-img img{max-height:250px;object-fit:contain}
@@ -584,21 +587,23 @@ html{scroll-behavior:smooth}
     <h2 class="section-title">Partner-Empfehlung</h2>
     <span class="ad-label">Werbung · Partnerlink*</span>
   </div>
-  <a class="partner-card" href="https://de.aliexpress.com/item/1005012650237046.html" target="_blank" rel="sponsored nofollow noopener">
-    <div class="partner-img">
-      <img src="https://ae-pic-a1.aliexpress-media.com/kf/S38cd3270c7b94e09afede2a0a40eddd7d.jpg" alt="IEE Tragbare Powerstation 2048Wh LiFePO4">
-    </div>
+  <a class="partner-card no-img" href="https://temu.to/k/e7x24gpa12q" target="_blank" rel="sponsored nofollow noopener">
     <div class="partner-info">
-      <div class="product-brand">IEE · über AliExpress</div>
-      <h3>IEE 2400W / 3200W Tragbare Powerstation — 2048Wh LiFePO4-Akku mit Trolley</h3>
-      <p class="desc">Mobile Stromversorgung für Wohnmobil, Camping und Notstrom. AC-Ausgang, App-Steuerung, Versand aus der EU. ★ 4,9 (132 Bewertungen).</p>
-      <div class="product-prices">
-        <span class="price-now">470,01 €</span>
-        <span class="price-was">1.205,16 €</span>
-        <span class="price-save">–61%</span>
-      </div>
-      <span class="partner-btn">Bei AliExpress ansehen →</span>
-      <span class="partner-note">* Partnerlink (Werbung): Kaufst du über diesen Link, erhalten wir ggf. eine kleine Provision. Für dich ändert sich der Preis dadurch nicht. Verkauf &amp; Versand erfolgen durch den AliExpress-Händler.</span>
+      <div class="product-brand">über Temu</div>
+      <h3>Freistehender Akku-Staubsauger — 46 kPa Saugleistung, beutellos</h3>
+      <p class="desc">Kabelloser Stielstaubsauger mit starker Saugkraft für Hartboden, Teppich und Polster. Steht frei ohne Wandhalterung.</p>
+      <span class="partner-btn">Preis bei Temu ansehen →</span>
+      <span class="partner-note">* Partnerlink (Werbung): Kaufst du über diesen Link, erhalten wir ggf. eine kleine Provision. Für dich ändert sich der Preis dadurch nicht. Verkauf &amp; Versand erfolgen durch den Temu-Händler. Preise und Verfügbarkeit können sich jederzeit ändern.</span>
+    </div>
+  </a>
+
+  <a class="partner-card no-img" href="https://temu.to/k/e5pzllg6b1t" target="_blank" rel="sponsored nofollow noopener">
+    <div class="partner-info">
+      <div class="product-brand">über Temu</div>
+      <h3>Schminktisch mit großem Spiegel — inkl. Föhnhalter</h3>
+      <p class="desc">Frisiertisch mit großflächigem Spiegel, Stauraum und integriertem Halter für Haartrockner und Stylingtools.</p>
+      <span class="partner-btn">Preis bei Temu ansehen →</span>
+      <span class="partner-note">* Partnerlink (Werbung): Kaufst du über diesen Link, erhalten wir ggf. eine kleine Provision. Für dich ändert sich der Preis dadurch nicht. Verkauf &amp; Versand erfolgen durch den Temu-Händler. Preise und Verfügbarkeit können sich jederzeit ändern.</span>
     </div>
   </a>
 </div>
