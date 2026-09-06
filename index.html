@@ -237,6 +237,34 @@ footer{background:#111;border-top:1px solid #222}
 .checkout-btn:hover:not(:disabled){background:var(--dark)}
 .checkout-btn:disabled{background:var(--gray-400);cursor:not-allowed}
 
+/* ── PARTNER EMPFEHLUNG ── */
+.ad-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:1px}
+.partner-card{display:grid;grid-template-columns:300px 1fr;border:1px solid var(--gray-200);border-radius:var(--radius-md);overflow:hidden;background:#fff;transition:all .2s;cursor:pointer}
+.partner-card:hover{box-shadow:var(--shadow-md);border-color:var(--black)}
+.partner-img{background:var(--gray-50);display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+.partner-img img{max-height:250px;object-fit:contain}
+.partner-info{padding:28px 32px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.partner-info h3{font-size:18px;font-weight:700;color:var(--black);line-height:1.35;letter-spacing:-.3px}
+.partner-info .desc{font-size:13.5px;color:var(--gray-600);line-height:1.6}
+.partner-btn{background:var(--black);color:#fff;padding:12px 24px;border-radius:var(--radius-md);font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:8px;margin-top:6px;transition:background .2s}
+.partner-card:hover .partner-btn{background:var(--dark)}
+.partner-note{font-size:11.5px;color:var(--gray-400);line-height:1.5;margin-top:4px}
+
+/* ── ANKER-SPRÜNGE ──
+   Der Header ist sticky (70px + 46px Navigation). Ohne scroll-margin landet
+   jeder Ankersprung hinter dem Header und die Überschrift ist unsichtbar —
+   es sieht dann so aus, als würde der Link nicht funktionieren. */
+html{scroll-behavior:smooth}
+#produkte,#zustand,#partner{scroll-margin-top:130px}
+
+/* ── SUCHE ── */
+.no-results{grid-column:1/-1;padding:56px 20px;text-align:center;color:var(--gray-600);font-size:15px;line-height:1.7}
+.no-results strong{color:var(--black)}
+.search-reset{display:inline-block;margin-top:14px;padding:10px 20px;background:var(--black);color:#fff;border-radius:var(--radius-md);font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:var(--font)}
+.search-reset:hover{background:var(--dark)}
+.search-info{grid-column:1/-1;font-size:13.5px;color:var(--gray-600);padding-bottom:4px}
+.search-info button{background:none;border:none;color:var(--black);font-weight:700;text-decoration:underline;cursor:pointer;font-size:13.5px;font-family:var(--font);padding:0 0 0 6px}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .cat-grid{grid-template-columns:repeat(4,1fr)}
@@ -250,6 +278,8 @@ footer{background:#111;border-top:1px solid #222}
   .usp-item{border-right:none;padding:0}
   .cond-grid{grid-template-columns:repeat(2,1fr)}
   .product-grid{grid-template-columns:repeat(2,1fr)}
+  .partner-card{grid-template-columns:1fr}
+  .partner-img img{max-height:200px}
 }
 @media(max-width:600px){
   .hero h1{font-size:28px}
@@ -300,8 +330,8 @@ footer{background:#111;border-top:1px solid #222}
     </a>
 
     <div class="search-wrap">
-      <input type="text" placeholder="Produkt suchen… z.B. Ninja, Dyson, Samsung">
-      <button class="search-btn">
+      <input type="text" id="searchInput" autocomplete="off" placeholder="Produkt suchen… z.B. Ninja, Foodi, Haartrockner">
+      <button class="search-btn" id="searchBtn">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         Suchen
       </button>
@@ -320,7 +350,7 @@ footer{background:#111;border-top:1px solid #222}
 <!-- NAV -->
 <div class="nav-bar">
   <div class="nav-inner">
-    <a href="#" class="nav-link active">Alle Kategorien</a>
+    <a href="#produkte" class="nav-link active">Alle Kategorien</a>
     
     <a href="#produkte" class="nav-link">🧊 Slush & Eis</a>
     <a href="#produkte" class="nav-link">🍟 Luftfritteusen</a>
@@ -328,7 +358,7 @@ footer{background:#111;border-top:1px solid #222}
     <a href="#produkte" class="nav-link">🧹 Staubsauger</a>
     <a href="#produkte" class="nav-link">🧃 Küche & Saft</a>
     <a href="#produkte" class="nav-link">🔥 Alle Angebote</a>
-    <a href="#" class="nav-link hot">🔥 Mega-Deals</a>
+    <a href="#produkte" class="nav-link hot">🔥 Mega-Deals</a>
   </div>
 </div>
 
@@ -418,7 +448,7 @@ footer{background:#111;border-top:1px solid #222}
     <div class="product-card" data-href="ninja-swirl.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/pvAAAeSwNBlp7IdD/s-l1600.webp" alt="Ninja Swirl NC701EU">
-        <span class="disc-badge">–22%</span>
+        <span class="disc-badge">–19%</span>
         <span class="grade-badge">Sehr gut</span>
         <button class="wish-btn">♡</button>
       </div>
@@ -426,18 +456,18 @@ footer{background:#111;border-top:1px solid #222}
         <div class="product-brand">Ninja</div>
         <div class="product-name">Swirl by CREAMi 13-in-1 Softeis & Eismaschine NC701EU</div>
         <div class="product-prices">
-          <span class="price-now">289,99 €</span>
+          <span class="price-now">299,99 €</span>
           <span class="price-was">369,99 €</span>
         </div>
         <div class="product-cond"><span class="cond-dot vgood"></span>B-Ware – geprüft & gereinigt</div>
-        <button class="add-cart" data-id="3" data-name="Ninja Swirl NC701EU" data-price="289.99" data-stripe="https://buy.stripe.com/dRm4gz4NE0YmfLL0JSes004">In den Warenkorb</button>
+        <button class="add-cart" data-id="3" data-name="Ninja Swirl NC701EU" data-price="299.99" data-stripe="https://buy.stripe.com/dRm4gz4NE0YmfLL0JSes004">In den Warenkorb</button>
       </div>
     </div>
 
     <div class="product-card" data-href="ninja-slushi.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/OqgAAeSw3uFp4LJY/s-l1600.webp" alt="Ninja SLUSHi">
-        <span class="disc-badge">–5%</span>
+        <span class="disc-badge">–17%</span>
         <span class="grade-badge">Sehr gut</span>
         <button class="wish-btn">♡</button>
       </div>
@@ -445,18 +475,18 @@ footer{background:#111;border-top:1px solid #222}
         <div class="product-brand">Ninja</div>
         <div class="product-name">SLUSHi FS301EU Slush-Eismaschine Ice Cocktails Blau Grau</div>
         <div class="product-prices">
-          <span class="price-now">199,99 €</span>
-          <span class="price-was">209,99 €</span>
+          <span class="price-now">289,99 €</span>
+          <span class="price-was">349,99 €</span>
         </div>
         <div class="product-cond"><span class="cond-dot vgood"></span>B-Ware – geprüft & gereinigt</div>
-        <button class="add-cart" disabled style="background:#999;cursor:not-allowed" data-name="Ninja SLUSHi FS301EU">Ausverkauft</button>
+        <button class="add-cart" data-id="1" data-name="Ninja SLUSHi FS301EU" data-price="289.99" data-stripe="https://buy.stripe.com/14A8wPcg6ePceHHeAIes00a">In den Warenkorb</button>
       </div>
     </div>
 
     <div class="product-card" data-href="shark-hd352de.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/cmgAAeSwAcJpiz0X/s-l1600.webp" alt="Shark HD352DE">
-        <span class="disc-badge">–8%</span>
+        <span class="disc-badge">–17%</span>
         <span class="grade-badge">Wie neu</span>
         <button class="wish-btn">♡</button>
       </div>
@@ -464,11 +494,11 @@ footer{background:#111;border-top:1px solid #222}
         <div class="product-brand">Shark</div>
         <div class="product-name">HD352DE SpeedStyle Haartrockner Haarföhn Lockenstab Multistyler</div>
         <div class="product-prices">
-          <span class="price-now">109,99 €</span>
+          <span class="price-now">99,99 €</span>
           <span class="price-was">119,99 €</span>
         </div>
         <div class="product-cond"><span class="cond-dot good"></span>B-Ware/Neu – top Zustand</div>
-        <button class="add-cart" data-id="2" data-name="Shark HD352DE" data-price="109.99" data-stripe="https://buy.stripe.com/fZudR9bc222qfLL0JSes005">In den Warenkorb</button>
+        <button class="add-cart" data-id="2" data-name="Shark HD352DE" data-price="99.99" data-stripe="https://buy.stripe.com/fZudR92FwayW9nn3W4es008">In den Warenkorb</button>
       </div>
     </div>
 
@@ -494,7 +524,7 @@ footer{background:#111;border-top:1px solid #222}
     <div class="product-card" data-href="ninja-af400eu.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/UrwAAeSw0gVpLH05/s-l1600.webp" alt="Ninja Foodi MAX AF400EUCP">
-        <span class="disc-badge">–6%</span>
+        <span class="disc-badge">–12%</span>
         <span class="grade-badge">Sehr gut</span>
         <button class="wish-btn">♡</button>
       </div>
@@ -502,11 +532,11 @@ footer{background:#111;border-top:1px solid #222}
         <div class="product-brand">Ninja</div>
         <div class="product-name">Foodi MAX Dual Zone Heißluftfritteuse AF400EUCP 9,5 L</div>
         <div class="product-prices">
-          <span class="price-now">159,99 €</span>
+          <span class="price-now">149,99 €</span>
           <span class="price-was">169,99 €</span>
         </div>
         <div class="product-cond"><span class="cond-dot vgood"></span>Retour – geprüft & gereinigt</div>
-        <button class="add-cart" data-id="5" data-name="Ninja Foodi AF400EUCP" data-price="159.99" data-stripe="https://buy.stripe.com/4gM14n2Fw6iGbvvakses002">In den Warenkorb</button>
+        <button class="add-cart" data-id="5" data-name="Ninja Foodi AF400EUCP" data-price="149.99" data-stripe="https://buy.stripe.com/eVq3cv6VMayW8jjeAIes009">In den Warenkorb</button>
       </div>
     </div>
 
@@ -525,26 +555,7 @@ footer{background:#111;border-top:1px solid #222}
           <span class="price-was">99,04 €</span>
         </div>
         <div class="product-cond"><span class="cond-dot vgood"></span>B-Ware – geprüft & gereinigt</div>
-        <button class="add-cart" data-id="6" data-name="Ninja JC151EU Slow Juicer" data-price="89.04" data-stripe="https://buy.stripe.com/aFa00jfsiayW2YZbowes001">In den Warenkorb</button>
-      </div>
-    </div>
-
-    <div class="product-card" data-href="shark-flexstyle.html">
-      <div class="product-img-wrap">
-        <img src="https://i.ebayimg.com/images/g/cmgAAeSwAcJpiz0X/s-l1600.webp" alt="Shark FlexStyle">
-        <span class="disc-badge">–20%</span>
-        <span class="grade-badge">Wie neu</span>
-        <button class="wish-btn">♡</button>
-      </div>
-      <div class="product-body">
-        <div class="product-brand">Shark</div>
-        <div class="product-name">FlexStyle 5-in-1 Multistyler & Haartrockner HD430DECO</div>
-        <div class="product-prices">
-          <span class="price-now">129,99 €</span>
-          <span class="price-was">159,99 €</span>
-        </div>
-        <div class="product-cond"><span class="cond-dot good"></span>Retour – geprüft & gereinigt</div>
-        <button class="add-cart" data-id="8" data-name="Shark FlexStyle HD430" data-price="129.99" data-stripe="https://buy.stripe.com/fZudR9bc222qfLL0JSes005">In den Warenkorb</button>
+        <button class="add-cart" disabled style="background:#999;cursor:not-allowed" data-name="Ninja JC151EU Slow Juicer">Ausverkauft</button>
       </div>
     </div>
 
@@ -565,6 +576,31 @@ footer{background:#111;border-top:1px solid #222}
     </div>
     <a href="#produkte" class="deal-cta">Zu den Angeboten →</a>
   </div>
+</div>
+
+<!-- PARTNER EMPFEHLUNG (Werbung / Affiliate) -->
+<div class="section" id="partner">
+  <div class="section-head">
+    <h2 class="section-title">Partner-Empfehlung</h2>
+    <span class="ad-label">Werbung · Partnerlink*</span>
+  </div>
+  <a class="partner-card" href="https://de.aliexpress.com/item/1005012650237046.html" target="_blank" rel="sponsored nofollow noopener">
+    <div class="partner-img">
+      <img src="https://ae-pic-a1.aliexpress-media.com/kf/S38cd3270c7b94e09afede2a0a40eddd7d.jpg" alt="IEE Tragbare Powerstation 2048Wh LiFePO4">
+    </div>
+    <div class="partner-info">
+      <div class="product-brand">IEE · über AliExpress</div>
+      <h3>IEE 2400W / 3200W Tragbare Powerstation — 2048Wh LiFePO4-Akku mit Trolley</h3>
+      <p class="desc">Mobile Stromversorgung für Wohnmobil, Camping und Notstrom. AC-Ausgang, App-Steuerung, Versand aus der EU. ★ 4,9 (132 Bewertungen).</p>
+      <div class="product-prices">
+        <span class="price-now">470,01 €</span>
+        <span class="price-was">1.205,16 €</span>
+        <span class="price-save">–61%</span>
+      </div>
+      <span class="partner-btn">Bei AliExpress ansehen →</span>
+      <span class="partner-note">* Partnerlink (Werbung): Kaufst du über diesen Link, erhalten wir ggf. eine kleine Provision. Für dich ändert sich der Preis dadurch nicht. Verkauf &amp; Versand erfolgen durch den AliExpress-Händler.</span>
+    </div>
+  </a>
 </div>
 
 <!-- CONDITION GUIDE -->
@@ -731,6 +767,78 @@ document.querySelectorAll('.wish-btn').forEach(btn=>{
     this.style.color=this.textContent==='♥'?'#cc0000':'';
   });
 });
+
+/* ── SUCHE ──
+   Der Shop ist eine einzelne Seite: alle Produkte stehen bereits im DOM.
+   Es braucht also keinen Server, nur ein Filter über die sichtbaren Karten.
+   Gesucht wird über Marke, Produktname und Zustand. Umlaute und ß werden
+   normalisiert, damit "fohn" auch "Haarföhn" und "heissluft" auch
+   "Heißluftfritteuse" findet. */
+(function(){
+  const input=document.getElementById('searchInput');
+  const btn=document.getElementById('searchBtn');
+  const grid=document.querySelector('#produkte .product-grid');
+  if(!input||!btn||!grid)return;
+
+  const cards=[...grid.querySelectorAll('.product-card')];
+  const norm=s=>(s||'').toLowerCase()
+    .normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,' ').trim();
+  const haystack=new Map(cards.map(c=>[c,norm(c.textContent)]));
+
+  const info=document.createElement('div');
+  info.className='search-info';
+  info.hidden=true;
+  grid.parentNode.insertBefore(info,grid);
+
+  const empty=document.createElement('div');
+  empty.className='no-results';
+  empty.hidden=true;
+  grid.appendChild(empty);
+
+  function reset(){
+    input.value='';
+    cards.forEach(c=>{c.hidden=false});
+    info.hidden=true;
+    empty.hidden=true;
+  }
+
+  function run(){
+    const q=norm(input.value);
+    if(!q){reset();return;}
+    // Every word must appear somewhere in the card — "ninja fritteuse" narrows,
+    // it does not widen.
+    const words=q.split(' ').filter(Boolean);
+    let hits=0;
+    cards.forEach(c=>{
+      const hay=haystack.get(c);
+      const match=words.every(w=>hay.includes(w));
+      c.hidden=!match;
+      if(match)hits++;
+    });
+
+    if(hits){
+      info.hidden=false;
+      info.innerHTML='<strong>'+hits+'</strong> Treffer für „'+
+        input.value.replace(/[<>&]/g,'')+'“<button type="button">Suche zurücksetzen</button>';
+      info.querySelector('button').addEventListener('click',reset);
+      empty.hidden=true;
+    }else{
+      info.hidden=true;
+      empty.hidden=false;
+      empty.innerHTML='Keine Treffer für <strong>„'+input.value.replace(/[<>&]/g,'')+'“</strong>.<br>'+
+        'Versuche es mit einer Marke (Ninja, Shark) oder einem Gerätetyp (Fritteuse, Haartrockner).<br>'+
+        '<button type="button" class="search-reset">Alle Produkte zeigen</button>';
+      empty.querySelector('button').addEventListener('click',reset);
+    }
+    document.getElementById('produkte').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  btn.addEventListener('click',run);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();run()}});
+  // Clearing the box brings every product back without needing the button.
+  input.addEventListener('input',()=>{if(!input.value.trim())reset()});
+})();
 </script>
 </body>
 </html>
