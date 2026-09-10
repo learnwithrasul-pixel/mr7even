@@ -118,6 +118,17 @@ header{background:var(--white);border-bottom:1px solid var(--gray-200);position:
 .cat-card:hover{border-color:var(--black);background:#fff;box-shadow:var(--shadow-md)}
 .cat-icon{font-size:28px;margin-bottom:8px}
 .cat-name{font-size:12px;font-weight:600;color:var(--black)}
+/* Die gewaehlte Kategorie muss man sehen, sonst klickt man zweimal und
+   glaubt, es sei nichts passiert. */
+.cat-card.active{border-color:var(--black);background:#fff;box-shadow:var(--shadow-md)}
+.cat-card.active .cat-name{text-decoration:underline;text-underline-offset:3px}
+/* Kurzbeschreibung aus der eBay-Anzeige. Zwei Zeilen, damit die Karten in
+   einer Reihe gleich hoch bleiben. */
+.product-desc{font-size:12.5px;line-height:1.45;color:var(--gray-600);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
+.cat-reset{display:none;margin-left:12px;font-size:13px;color:var(--gray-600);
+  text-decoration:underline;cursor:pointer;background:none;border:none;padding:0}
+.cat-reset.show{display:inline}
 .cat-count{font-size:11px;color:var(--gray-400);margin-top:2px}
 
 /* ── PRODUCT GRID ── */
@@ -429,14 +440,16 @@ html{scroll-behavior:smooth}
     <a href="#produkte" class="section-link">Alle anzeigen →</a>
   </div>
   <div class="cat-grid">
-    <div class="cat-card"><div class="cat-icon">🧊</div><div class="cat-name">Slush & Eismaschinen</div><div class="cat-count">Ninja</div></div>
-    <div class="cat-card"><div class="cat-icon">🍟</div><div class="cat-name">Luftfritteusen & Grill</div><div class="cat-count">Ninja Foodi</div></div>
-    <div class="cat-card"><div class="cat-icon">🧃</div><div class="cat-name">Küche & Saft</div><div class="cat-count">Ninja</div></div>
-    <div class="cat-card"><div class="cat-icon">💨</div><div class="cat-name">Haarpflege & Styling</div><div class="cat-count">Shark</div></div>
-    <div class="cat-card"><div class="cat-icon">🧹</div><div class="cat-name">Akku-Staubsauger</div><div class="cat-count">Shark</div></div>
-    
-    
-    
+    <div class="cat-card" data-cat="eis"><div class="cat-icon">🧊</div><div class="cat-name">Eis & Slush</div><div class="cat-count">4 Artikel</div></div>
+    <div class="cat-card" data-cat="kueche"><div class="cat-icon">🍳</div><div class="cat-name">Küche</div><div class="cat-count">5 Artikel</div></div>
+    <div class="cat-card" data-cat="friteusen"><div class="cat-icon">🍟</div><div class="cat-name">Heißluftfritteusen</div><div class="cat-count">9 Artikel</div></div>
+    <div class="cat-card" data-cat="wohnen"><div class="cat-icon">🏠</div><div class="cat-name">Haushalt & Garten</div><div class="cat-count">2 Artikel</div></div>
+    <div class="cat-card" data-cat="haar"><div class="cat-icon">💨</div><div class="cat-name">Haarpflege</div><div class="cat-count">2 Artikel</div></div>
+    <div class="cat-card" data-cat="reinigung"><div class="cat-icon">🧹</div><div class="cat-name">Reinigung & Luft</div><div class="cat-count">3 Artikel</div></div>
+    <div class="cat-card" data-cat="klima"><div class="cat-icon">🌬️</div><div class="cat-name">Ventilatoren</div><div class="cat-count">2 Artikel</div></div>
+    <div class="cat-card" data-cat="technik"><div class="cat-icon">💻</div><div class="cat-name">Computer & Technik</div><div class="cat-count">3 Artikel</div></div>
+    <div class="cat-card" data-cat="auto"><div class="cat-icon">🚗</div><div class="cat-name">Auto</div><div class="cat-count">1 Artikel</div></div>
+    <div class="cat-card" data-cat="gesundheit"><div class="cat-icon">💪</div><div class="cat-name">Gesundheit</div><div class="cat-count">3 Artikel</div></div>
   </div>
 </div>
 
@@ -448,7 +461,7 @@ html{scroll-behavior:smooth}
   </div>
   <div class="product-grid">
 
-    <div class="product-card" data-href="shark-hd352de.html">
+    <div class="product-card" data-cat="haar" data-href="shark-hd352de.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/CkMAAeSwjSBqgJIo/s-l1600.webp" alt="Shark HD352DE SpeedStyle Pro 5-in-1 Haartrockner Weiß" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -457,6 +470,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">HD352DE SpeedStyle Pro 5-in-1 Haartrockner Weiß</div>
+        <div class="product-desc">Erleben Sie professionelle Styling-Ergebnisse wie beim Friseur – ganz bequem zu Hause!</div>
+
         <div class="product-prices">
           <span class="price-now">89,99 €</span>
         </div>
@@ -465,7 +480,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="wohnen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/gK4AAeSwxsNqOvgv/s-l1600.webp" alt="mr.7even Schminktisch mit großem Spiegel und Föhnhalter, 8 Schubladen" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -473,6 +488,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">mr.7even</div>
         <div class="product-name">Schminktisch mit großem Spiegel und Föhnhalter, 8 Schubladen</div>
+        <div class="product-desc">Verwandeln Sie Ihre tägliche Beauty-Routine in ein exklusives Salon-Erlebnis!</div>
+
         <div class="product-prices">
           <span class="price-now">169,99 €</span>
         </div>
@@ -480,7 +497,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="kueche">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/GA0AAeSw529qaOku/s-l1600.webp" alt="Shark Ninja Perfect Wasserkocher Temperature Bleu 1,7 L" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -489,6 +506,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">Ninja Perfect Wasserkocher Temperature Bleu 1,7 L</div>
+        <div class="product-desc">Der Shark Ninja Perfect Temperature Wasserkocher überzeugt mit modernem Design, präziser Temperatursteuerung und einem Fassungsvermögen von 1,7 Litern .</div>
+
         <div class="product-prices">
           <span class="price-now">69,99 €</span>
         </div>
@@ -497,7 +516,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="reinigung">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/1RsAAeSw~49qMGfY/s-l1600.webp" alt="Shark HX100EUT StainForce Fleckenentferner" loading="lazy">
         <span class="grade-badge">Wie neu</span>
@@ -506,6 +525,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">HX100EUT StainForce Fleckenentferner</div>
+        <div class="product-desc">Mit dem SHARK HX100EUT Handstaubsauger entfernen Sie Staub, Krümel, Tierhaare und Schmutz schnell und zuverlässig.</div>
+
         <div class="product-prices">
           <span class="price-now">109,99 €</span>
         </div>
@@ -514,7 +535,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/gmkAAeSwiX1ql0mT/s-l1600.webp" alt="Ninja Double Stack XL SL451EU Heißluftfritteuse 9,5 L" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -522,6 +543,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Double Stack XL SL451EU Heißluftfritteuse 9,5 L</div>
+        <div class="product-desc">Das besondere Double-Stack-System nutzt den verfügbaren Platz nach oben.</div>
+
         <div class="product-prices">
           <span class="price-now">129,99 €</span>
         </div>
@@ -529,7 +552,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/cFUAAeSwwtVqnUjp/s-l1600.webp" alt="Ninja Foodi FlexDrawer AF550EUCP 7-in-1 DualZone" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -538,6 +561,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Foodi FlexDrawer AF550EUCP 7-in-1 DualZone</div>
+        <div class="product-desc">7-in-1 Funktionen – Air Fry, Max Crisp, Roast, Bake, Reheat, Dehydrate u.v.m.</div>
+
         <div class="product-prices">
           <span class="price-now">129,99 €</span>
         </div>
@@ -546,7 +571,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="klima">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/UzsAAeSwMk1qgis8/s-l1600.webp" alt="Shark ChillPill FA025EU 3-in-1 Handventilator InstaChill" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -555,6 +580,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">ChillPill FA025EU 3-in-1 Handventilator InstaChill</div>
+        <div class="product-desc">zusammen mit dem Luftstrom für ein besonders erfrischendes Gefühl sorgt.</div>
+
         <div class="product-prices">
           <span class="price-now">79,99 €</span>
         </div>
@@ -563,7 +590,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="haar">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/LeEAAeSw6Z5qbRkh/s-l1600.webp" alt="Shark HD752EU SpeedStyle Haartrockner Multistyler" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -572,6 +599,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">HD752EU SpeedStyle Haartrockner Multistyler</div>
+        <div class="product-desc">Egal ob glatt, lockig oder voluminös – dieses Gerät bietet maximale Flexibilität für jeden Haartyp.</div>
+
         <div class="product-prices">
           <span class="price-now">99,99 €</span>
         </div>
@@ -580,7 +609,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="auto">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/rKkAAeSwmKhqhNn5/s-l1600.webp" alt="Tesla Model Y Juniper 2025-2026 TPE Fußmatten und Kofferraumwanne" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -588,6 +617,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Tesla</div>
         <div class="product-name">Model Y Juniper 2025-2026 TPE Fußmatten und Kofferraumwanne</div>
+        <div class="product-desc">Diese Tesla Auto Fußmatten kombinieren Stil und Funktionalität.</div>
+
         <div class="product-prices">
           <span class="price-now">159,99 €</span>
         </div>
@@ -595,7 +626,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="kueche">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/ScYAAeSwWxpqA328/s-l1600.webp" alt="Ninja OL750EU Foodi MAX 14-in-1 SmartLid Multikocher" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -603,6 +634,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">OL750EU Foodi MAX 14-in-1 SmartLid Multikocher</div>
+        <div class="product-desc">modernste Kochtechnologie mit maximaler Vielseitigkeit.</div>
+
         <div class="product-prices">
           <span class="price-now">279,99 €</span>
         </div>
@@ -610,7 +643,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="eis">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/ZPYAAeSwwtVqg2wU/s-l1600.webp" alt="Ninja CREAMi Deluxe NC502EU Eismaschine" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -619,6 +652,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">CREAMi Deluxe NC502EU Eismaschine</div>
+        <div class="product-desc">Mit der innovativen NINJA CREAMi Deluxe NC502EU genießen Sie hausgemachte Desserts ganz nach Ihrem Geschmack – cremig, frisch und individuell.</div>
+
         <div class="product-prices">
           <span class="price-now">189,99 €</span>
         </div>
@@ -627,7 +662,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="reinigung">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/ggkAAeSw5oRqVf70/s-l1600.webp" alt="Shark HP072EU NeverChange Luftreiniger Compact Pro bis 23 m²" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -636,6 +671,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">HP072EU NeverChange Luftreiniger Compact Pro bis 23 m²</div>
+        <div class="product-desc">eBay • • • • Der Shark HP072EU NeverChange Luftreiniger Compact Pro ist die ideale Lösung für ein sauberes Zuhause.</div>
+
         <div class="product-prices">
           <span class="price-now">89,99 €</span>
         </div>
@@ -644,7 +681,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="klima">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/tu0AAeSw459qc7Qf/s-l1600.webp" alt="Shark FA150EU FlexBreeze TableMate Akku-Ventilator" loading="lazy">
         <span class="grade-badge">Wie neu</span>
@@ -653,6 +690,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">FA150EU FlexBreeze TableMate Akku-Ventilator</div>
+        <div class="product-desc">Der Shark FlexBreeze überzeugt mit einem starken Luftstrom, modernem Design und flexiblen Einsatzmöglichkeiten – ideal für Zuhause, Büro, Balkon oder Terrasse.</div>
+
         <div class="product-prices">
           <span class="price-now">99,99 €</span>
         </div>
@@ -661,7 +700,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="eis">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/rTIAAeSwfn9qegre/s-l1600.webp" alt="Ninja CREAMi NC302EU Eismaschine Schwarz Silber" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -670,6 +709,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">CREAMi NC302EU Eismaschine Schwarz Silber</div>
+        <div class="product-desc">Dieses Produkt ist technisch einwandfrei , kann jedoch leichte optische Mängel aufweisen.</div>
+
         <div class="product-prices">
           <span class="price-now">169,99 €</span>
         </div>
@@ -678,7 +719,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card" data-href="ninja-dz400eu.html">
+    <div class="product-card" data-cat="friteusen" data-href="ninja-dz400eu.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/QfoAAeSwawlpLHwc/s-l1600.webp" alt="Ninja Foodi MAX DZ400EU Dual Zone Heißluftfritteuse 9,5 L" loading="lazy">
         <span class="grade-badge">Wie neu</span>
@@ -687,6 +728,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Foodi MAX DZ400EU Dual Zone Heißluftfritteuse 9,5 L</div>
+        <div class="product-desc">Zustand: B-Ware – technisch einwandfrei und optisch nahezu wie neu!</div>
+
         <div class="product-prices">
           <span class="price-now">139,99 €</span>
         </div>
@@ -695,7 +738,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card" data-href="ninja-swirl.html">
+    <div class="product-card" data-cat="eis" data-href="ninja-swirl.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/pvAAAeSwNBlp7IdD/s-l1600.webp" alt="Ninja Swirl by CREAMi NC701EU 13-in-1 Softeis- und Eismaschine" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -704,6 +747,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Swirl by CREAMi NC701EU 13-in-1 Softeis- und Eismaschine</div>
+        <div class="product-desc">Bereiten Sie in Ihrer eigenen Küche cremiges und perfektes Softeis zu.</div>
+
         <div class="product-prices">
           <span class="price-now">289,99 €</span>
         </div>
@@ -712,7 +757,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="reinigung">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/GG8AAeSw2bRqMGcW/s-l1600.webp" alt="Shark PX200EUT Staubsauger ohne Beutel" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -721,6 +766,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">PX200EUT Staubsauger ohne Beutel</div>
+        <div class="product-desc">Der SHARK PX200EUT überzeugt mit starker Saugleistung, moderner Technologie und einer komfortablen Bedienung.</div>
+
         <div class="product-prices">
           <span class="price-now">119,00 €</span>
         </div>
@@ -729,7 +776,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/zH8AAeSw9fJqnUr8/s-l1600.webp" alt="Ninja Foodi MAX Dual Zone Heißluftfritteuse mit Bratenthermometer" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -738,6 +785,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Foodi MAX Dual Zone Heißluftfritteuse mit Bratenthermometer</div>
+        <div class="product-desc">Zustand: Das Gerät ist technisch in einem einwandfreien 1A-Zustand und wurde von uns persönlich fachmännisch geprüft.</div>
+
         <div class="product-prices">
           <span class="price-now">139,99 €</span>
         </div>
@@ -746,7 +795,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/~5gAAeSw9h1qckJa/s-l1600.webp" alt="Ninja PRO AF140EU Heißluftfritteuse 4,7 L Rot" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -755,6 +804,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">PRO AF140EU Heißluftfritteuse 4,7 L Rot</div>
+        <div class="product-desc">Die NINJA Heißluftfritteuse mit innovativer AirCrisp-Technologie sorgt für gleichmäßige Heißluftzirkulation und perfekte Ergebnisse – außen knusprig, innen saftig.</div>
+
         <div class="product-prices">
           <span class="price-now">79,99 €</span>
         </div>
@@ -763,7 +814,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="kueche">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/eKsAAeSwcE5p8bk2/s-l1600.webp" alt="Ninja ES501EU Luxe Essential Espresso- und Kaffeemaschine" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -771,6 +822,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">ES501EU Luxe Essential Espresso- und Kaffeemaschine</div>
+        <div class="product-desc">Genießen Sie Kaffee auf Barista-Niveau bequem zu Hause!</div>
+
         <div class="product-prices">
           <span class="price-now">319,99 €</span>
         </div>
@@ -778,7 +831,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card" data-href="ninja-slushi.html">
+    <div class="product-card" data-cat="eis" data-href="ninja-slushi.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/ikEAAeSwbMNqIXGn/s-l1600.webp" alt="Ninja SLUSHi FS301EU Slush-Eismaschine Blau Grau" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -787,6 +840,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">SLUSHi FS301EU Slush-Eismaschine Blau Grau</div>
+        <div class="product-desc">Bei Fragen stehen wir Ihnen jederzeit gerne zur Verfügung.</div>
+
         <div class="product-prices">
           <span class="price-now">269,99 €</span>
         </div>
@@ -795,7 +850,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="technik">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/VU0AAeSwA7pqAt5t/s-l1600.webp" alt="Lenovo Smart-Brille 100 MP Kamera 8K mit Bluetooth-Anruffunktion" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -803,6 +858,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Lenovo</div>
         <div class="product-name">Smart-Brille 100 MP Kamera 8K mit Bluetooth-Anruffunktion</div>
+        <div class="product-desc">Perfekt für Alltag, Reisen, Sport, Autofahrten, Meetings oder Social Media Content.</div>
+
         <div class="product-prices">
           <span class="price-now">78,53 €</span>
         </div>
@@ -810,7 +867,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/-gUAAeSw0t5p71SI/s-l1600.webp" alt="Ninja CRISPi FN101EUSG Heißluftfritteuse mit 2 Körben" loading="lazy">
         <span class="grade-badge">Wie neu</span>
@@ -819,6 +876,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">CRISPi FN101EUSG Heißluftfritteuse mit 2 Körben</div>
+        <div class="product-desc">Mit dem Ninja CRISPi bringst du knusprige Ergebnisse in deine Küche – einfach, sauber und schnell.</div>
+
         <div class="product-prices">
           <span class="price-now">109,99 €</span>
         </div>
@@ -827,7 +886,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="gesundheit">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/T~cAAeSw4iBqOrrL/s-l1600.webp" alt="mr.7even Ohrenschmalz-Entferner mit Doppeltank, 12 Aufsätze, 3 Modi" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -835,6 +894,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">mr.7even</div>
         <div class="product-name">Ohrenschmalz-Entferner mit Doppeltank, 12 Aufsätze, 3 Modi</div>
+        <div class="product-desc">Suchen Sie nach einer sicheren, hygienischen und schmerzfreien Methode zur Ohrenreinigung?</div>
+
         <div class="product-prices">
           <span class="price-now">33,99 €</span>
         </div>
@@ -842,7 +903,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="kueche">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/nGEAAeSwx8pqLnpN/s-l1600.webp" alt="mr.7even Kochtopf 28 cm mit Glasdeckel, Schwarz Gold" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -850,6 +911,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">mr.7even</div>
         <div class="product-name">Kochtopf 28 cm mit Glasdeckel, Schwarz Gold</div>
+        <div class="product-desc">Mit diesem hochwertigen 28 cm Kochtopf bereiten Sie Suppen, Eintöpfe, Pasta, Gemüse und viele weitere Gerichte schnell und komfortabel zu.</div>
+
         <div class="product-prices">
           <span class="price-now">27,99 €</span>
         </div>
@@ -857,7 +920,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/jJQAAeSw1rlp-jfI/s-l1600.webp" alt="Ninja DZ300EU Doppel-Heißluftfritteuse" loading="lazy">
         <span class="grade-badge">Wie neu</span>
@@ -866,6 +929,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">DZ300EU Doppel-Heißluftfritteuse</div>
+        <div class="product-desc">Die Ninja DZ300EU Doppel-Heißluftfritteuse bringt deine Küche auf ein neues Level.</div>
+
         <div class="product-prices">
           <span class="price-now">109,99 €</span>
         </div>
@@ -874,7 +939,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card" data-href="ninja-af400eu.html">
+    <div class="product-card" data-cat="friteusen" data-href="ninja-af400eu.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/UrwAAeSw0gVpLH05/s-l1600.webp" alt="Ninja Foodi MAX AF400EUCP Dual Zone Heißluftfritteuse 9,5 L" loading="lazy">
         <span class="grade-badge">Sehr gut</span>
@@ -883,6 +948,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Foodi MAX AF400EUCP Dual Zone Heißluftfritteuse 9,5 L</div>
+        <div class="product-desc">Ninja Foodi MAX Dual Zone Heißluftfritteuse [AF400EUCP] – Perfektes Kocherlebnis!</div>
+
         <div class="product-prices">
           <span class="price-now">139,99 €</span>
         </div>
@@ -891,7 +958,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="kueche">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/OZAAAeSwBe1qDfeE/s-l1600.webp" alt="Ninja SFP700EU Multifunktionsofen und Multikocher, Grau" loading="lazy">
         <span class="grade-badge">Wie neu</span>
@@ -900,6 +967,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">SFP700EU Multifunktionsofen und Multikocher, Grau</div>
+        <div class="product-desc">Ninja SFP700EU Multikocher simdi bana bu ürün icin SEO icerikli emojili ürün aciklmasi yaz.</div>
+
         <div class="product-prices">
           <span class="price-now">199,99 €</span>
         </div>
@@ -908,7 +977,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="friteusen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/crkAAeSwllxpStZw/s-l1600.webp" alt="Ninja Foodi SL400EU Double Stack XL Heißluftfritteuse" loading="lazy">
         <span class="grade-badge">B-Ware</span>
@@ -917,6 +986,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Ninja</div>
         <div class="product-name">Foodi SL400EU Double Stack XL Heißluftfritteuse</div>
+        <div class="product-desc">Voll funktionsfähig: Das Gerät wurde von uns technisch fachmännisch geprüft.</div>
+
         <div class="product-prices">
           <span class="price-now">129,99 €</span>
         </div>
@@ -925,7 +996,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="gesundheit">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/RRMAAeSw0vRqOF-3/s-l1600.webp" alt="mr.7even Vibrationsplatte Vibrationstrainer für Ganzkörpertraining" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -933,6 +1004,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">mr.7even</div>
         <div class="product-name">Vibrationsplatte Vibrationstrainer für Ganzkörpertraining</div>
+        <div class="product-desc">Mit dieser leistungsstarken Vibrationsplatte trainieren Sie Ihren gesamten Körper bequem von Zuhause aus.</div>
+
         <div class="product-prices">
           <span class="price-now">74,99 €</span>
         </div>
@@ -940,7 +1013,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="technik">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/2VwAAeSwkJNp-cTS/s-l1600.webp" alt="Lenovo IdeaPad Slim 3 15AMN8, Ryzen 3-7320U, 16 GB, 512 GB SSD" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -948,6 +1021,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Lenovo</div>
         <div class="product-name">IdeaPad Slim 3 15AMN8, Ryzen 3-7320U, 16 GB, 512 GB SSD</div>
+        <div class="product-desc">Das LENOVO IdeaPad Slim 3 15AMN8 ist ein zuverlässiger Laptop für Alltag, Office und Multimedia.</div>
+
         <div class="product-prices">
           <span class="price-now">479,99 €</span>
         </div>
@@ -955,7 +1030,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="gesundheit">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/1MgAAeSwEi9qgidO/s-l1600.webp" alt="Wondersmile Schallzahnbürste PRO" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -963,6 +1038,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Wondersmile</div>
         <div class="product-name">Schallzahnbürste PRO</div>
+        <div class="product-desc">zu einem praktischen Begleiter für Ihre tägliche Mundhygiene.</div>
+
         <div class="product-prices">
           <span class="price-now">69,99 €</span>
         </div>
@@ -970,7 +1047,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="technik">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/-JEAAeSwPXpp-NO2/s-l1600.webp" alt="MacBook Air 13 Zoll 2020 M1, QWERTZ, gebraucht" loading="lazy">
         <span class="grade-badge">Gebraucht</span>
@@ -979,6 +1056,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">MacBook</div>
         <div class="product-name">Air 13 Zoll 2020 M1, QWERTZ, gebraucht</div>
+        <div class="product-desc">Zum Verkauf steht ein leistungsstarkes MacBook Air (13&quot;, 2020, M1 Chip) in Space Grau .</div>
+
         <div class="product-prices">
           <span class="price-now">552,99 €</span>
         </div>
@@ -987,7 +1066,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-    <div class="product-card">
+    <div class="product-card" data-cat="wohnen">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/3JsAAeSw5nRqRQEO/s-l1600.webp" alt="mr.7even Flexibler Gartenschlauch 15 m, dehnbar" loading="lazy">
         <button class="wish-btn">♡</button>
@@ -995,6 +1074,8 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">mr.7even</div>
         <div class="product-name">Flexibler Gartenschlauch 15 m, dehnbar</div>
+        <div class="product-desc">Flexibler Gartenschlauch, Dehnbarer Gartenschlauch, Wasserschlauch 15m, 50FT Gartenschlauch, Flexi Schlauch, Gartenbrause, Sprühpistole, Bewässerungsschlauch, Gar…</div>
+
         <div class="product-prices">
           <span class="price-now">19,99 €</span>
         </div>
@@ -1002,7 +1083,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
-<div class="product-card" data-href="ninja-jc151eu.html">
+<div class="product-card" data-cat="kueche" data-href="ninja-jc151eu.html">
       <div class="product-img-wrap">
         <img src="https://i.ebayimg.com/images/g/dM0AAeSwxYdp-jqc/s-l1600.webp" alt="Ninja Slow Juicer JC151EU">
         <span class="disc-badge">–10%</span>
@@ -1301,6 +1382,77 @@ document.querySelectorAll('.wish-btn').forEach(btn=>{
   input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();run()}});
   // Clearing the box brings every product back without needing the button.
   input.addEventListener('input',()=>{if(!input.value.trim())reset()});
+})();
+
+/* ══════ Kategoriefilter ══════
+   Die Kacheln oben waren bisher reine Dekoration — anklickbar aussehend, aber
+   ohne Wirkung. Das ist schlimmer als gar keine Kacheln: wer klickt und nichts
+   passiert, haelt die Seite fuer kaputt.
+
+   Suche und Kategorie teilen sich dasselbe `hidden` an den Karten. Statt beide
+   Zustaende zu verrechnen, loescht der eine den anderen: eine Kategorie zu
+   waehlen leert die Suche, eine Suche hebt die Kategorie auf. Ein Modus zur
+   Zeit ist vorhersehbar; zwei sich ueberlagernde Filter fuehren zu leeren
+   Ergebnissen, die niemand sich erklaeren kann. */
+(function(){
+  const grid=document.querySelector('#produkte .product-grid');
+  const kacheln=[...document.querySelectorAll('.cat-card[data-cat]')];
+  const suchfeld=document.getElementById('searchInput');
+  const kopf=document.querySelector('#produkte .section-title');
+  if(!grid||!kacheln.length||!kopf)return;
+
+  const karten=[...grid.querySelectorAll('.product-card')];
+  const urspruenglich=kopf.textContent;
+
+  const zuruecksetzen=document.createElement('button');
+  zuruecksetzen.type='button';
+  zuruecksetzen.className='cat-reset';
+  zuruecksetzen.textContent='Alle Produkte zeigen';
+  kopf.parentNode.insertBefore(zuruecksetzen,kopf.nextSibling);
+
+  function alleZeigen(){
+    karten.forEach(c=>{c.hidden=false});
+    kacheln.forEach(k=>k.classList.remove('active'));
+    zuruecksetzen.classList.remove('show');
+    kopf.textContent=urspruenglich;
+  }
+
+  function filtern(key,label){
+    // Die Suche zuerst leeren und ihr eigenes Zuruecksetzen ausloesen, sonst
+    // bleiben zwei Filter gleichzeitig aktiv.
+    if(suchfeld&&suchfeld.value){
+      suchfeld.value='';
+      suchfeld.dispatchEvent(new Event('input',{bubbles:true}));
+    }
+    let treffer=0;
+    karten.forEach(c=>{
+      const passt=c.dataset.cat===key;
+      c.hidden=!passt;
+      if(passt)treffer++;
+    });
+    kacheln.forEach(k=>k.classList.toggle('active',k.dataset.cat===key));
+    zuruecksetzen.classList.add('show');
+    kopf.textContent=label+' ('+treffer+')';
+    document.getElementById('produkte').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  kacheln.forEach(k=>{
+    k.addEventListener('click',()=>{
+      // Zweiter Klick auf dieselbe Kachel hebt den Filter wieder auf.
+      if(k.classList.contains('active')){alleZeigen();return}
+      filtern(k.dataset.cat,k.querySelector('.cat-name').textContent);
+    });
+  });
+
+  zuruecksetzen.addEventListener('click',alleZeigen);
+
+  // Sucht jemand, verliert die Kategorie ihre Gueltigkeit.
+  const suchknopf=document.getElementById('searchBtn');
+  if(suchknopf)suchknopf.addEventListener('click',()=>{
+    kacheln.forEach(k=>k.classList.remove('active'));
+    zuruecksetzen.classList.remove('show');
+    kopf.textContent=urspruenglich;
+  });
 })();
 </script>
 </body>
