@@ -83,8 +83,8 @@ header{background:var(--white);border-bottom:1px solid var(--gray-200);position:
 
 /* ── HERO ── */
 .hero{background:var(--gray-50);border-bottom:1px solid var(--gray-200);overflow:hidden}
-.hero-inner{max-width:1320px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 400px;gap:0;min-height:380px}
-.hero-content{display:flex;flex-direction:column;justify-content:center;padding:48px 48px 48px 0}
+.hero-inner{max-width:1320px;margin:0 auto;padding:0 20px}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:40px 0;max-width:680px}
 .hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;padding:4px 12px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:16px;width:fit-content}
 .hero h1{font-size:40px;font-weight:800;color:var(--black);line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
 .hero h1 span{color:var(--red)}
@@ -97,11 +97,6 @@ header{background:var(--white);border-bottom:1px solid var(--gray-200);position:
 .hero-stats{display:flex;gap:32px;margin-top:32px;padding-top:28px;border-top:1px solid var(--gray-200)}
 .hero-stat .val{font-size:22px;font-weight:800;color:var(--black)}
 .hero-stat .lbl{font-size:11.5px;color:var(--gray-400);margin-top:2px}
-.hero-image{background:linear-gradient(135deg,#f0f0f0,#e8e8e8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-image img{width:100%;height:100%;object-fit:cover}
-.hero-img-badge{position:absolute;bottom:20px;right:20px;background:var(--red);color:#fff;padding:10px 16px;border-radius:var(--radius-md);text-align:center}
-.hero-img-badge .save{font-size:11px;opacity:.85;text-transform:uppercase;letter-spacing:.5px}
-.hero-img-badge .amount{font-size:22px;font-weight:800;line-height:1}
 
 /* ── USP STRIP ── */
 .usp-strip{border-bottom:1px solid var(--gray-200);background:#fff}
@@ -141,7 +136,7 @@ header{background:var(--white);border-bottom:1px solid var(--gray-200);position:
 .cat-count{font-size:11px;color:var(--gray-400);margin-top:2px}
 
 /* ── PRODUCT GRID ── */
-.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--gray-200);border:1px solid var(--gray-200);border-radius:var(--radius-md);overflow:hidden}
+.product-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--gray-200);border:1px solid var(--gray-200);border-radius:var(--radius-md);overflow:hidden}
 .product-card{background:#fff;transition:all .2s;position:relative;cursor:pointer;display:flex;flex-direction:column}
 .product-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:2;transform:translateY(-2px)}
 .product-img-wrap{position:relative;overflow:hidden;background:var(--gray-50);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
@@ -200,8 +195,11 @@ header{background:var(--white);border-bottom:1px solid var(--gray-200);position:
 .nl-form{display:flex;gap:0;border-radius:var(--radius-md);overflow:hidden;border:1.5px solid rgba(255,255,255,.15)}
 .nl-form input{flex:1;padding:13px 18px;font-size:14px;font-family:var(--font);border:none;outline:none;background:rgba(255,255,255,.08);color:#fff}
 .nl-form input::placeholder{color:rgba(255,255,255,.35)}
-.nl-form button{background:var(--red);color:#fff;padding:13px 22px;font-size:13.5px;font-weight:700;white-space:nowrap;transition:opacity .2s}
+.nl-form button{background:var(--red);color:#fff;padding:13px 22px;font-size:13.5px;font-weight:700;white-space:nowrap;transition:opacity .2s;cursor:pointer}
 .nl-form button:hover{opacity:.9}
+.nl-form input.err{outline:2px solid var(--red)}
+.nl-msg{font-size:13px;margin-top:12px;color:rgba(255,255,255,.7)}
+.nl-msg.err{color:#ff8a8a}
 
 /* ── FOOTER ── */
 footer{background:#111;border-top:1px solid #222}
@@ -291,23 +289,19 @@ html{scroll-behavior:smooth}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
-  .cat-grid{grid-template-columns:repeat(4,1fr)}
-  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .product-grid{grid-template-columns:repeat(4,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
 }
 @media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr}
-  .hero-image{display:none}
   .usp-inner{grid-template-columns:repeat(2,1fr);height:auto;padding:16px 20px;gap:16px}
   .usp-item{border-right:none;padding:0}
   .cond-grid{grid-template-columns:repeat(2,1fr)}
-  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .product-grid{grid-template-columns:repeat(3,1fr)}
   .partner-card{grid-template-columns:1fr}
   .partner-img img{max-height:200px}
 }
 @media(max-width:600px){
   .hero h1{font-size:28px}
-  .cat-grid{grid-template-columns:repeat(4,1fr)}
   .product-grid{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr}
   .topbar-inner{gap:16px;font-size:11px}
@@ -374,15 +368,17 @@ html{scroll-behavior:smooth}
 <!-- NAV -->
 <div class="nav-bar">
   <div class="nav-inner">
-    <a href="#produkte" class="nav-link active">Alle Kategorien</a>
-    
-    <a href="#produkte" class="nav-link">🧊 Slush & Eis</a>
-    <a href="#produkte" class="nav-link">🍟 Luftfritteusen</a>
-    <a href="#produkte" class="nav-link">💨 Haarpflege</a>
-    <a href="#produkte" class="nav-link">🧹 Staubsauger</a>
-    <a href="#produkte" class="nav-link">🧃 Küche & Saft</a>
-    <a href="#produkte" class="nav-link">🔥 Alle Angebote</a>
-    <a href="#produkte" class="nav-link hot">🔥 Mega-Deals</a>
+    <a href="#produkte" class="nav-link active" data-cat="">Alle Kategorien</a>
+    <a href="#produkte" class="nav-link" data-cat="eis">🧊 Eis & Slush</a>
+    <a href="#produkte" class="nav-link" data-cat="friteusen">🍟 Luftfritteusen</a>
+    <a href="#produkte" class="nav-link" data-cat="kueche">🍳 Küche</a>
+    <a href="#produkte" class="nav-link" data-cat="haar">💨 Haarpflege</a>
+    <a href="#produkte" class="nav-link" data-cat="reinigung">🧹 Reinigung & Luft</a>
+    <a href="#produkte" class="nav-link" data-cat="klima">🌬️ Ventilatoren</a>
+    <a href="#produkte" class="nav-link" data-cat="technik">💻 Technik</a>
+    <a href="#produkte" class="nav-link" data-cat="wohnen">🏠 Haushalt & Garten</a>
+    <a href="#produkte" class="nav-link" data-cat="auto">🚗 Auto</a>
+    <a href="#produkte" class="nav-link" data-cat="gesundheit">💪 Gesundheit</a>
   </div>
 </div>
 
@@ -400,14 +396,7 @@ html{scroll-behavior:smooth}
       <div class="hero-stats">
         <div class="hero-stat"><div class="val">100%</div><div class="lbl">Geprüft & gereinigt</div></div>
         <div class="hero-stat"><div class="val">bis 70%</div><div class="lbl">Ersparnis</div></div>
-        <div class="hero-stat"><div class="val">4–5</div><div class="lbl">Werktage Lieferung</div></div>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://i.ebayimg.com/images/g/pvAAAeSwNBlp7IdD/s-l1600.webp" alt="Ninja Swirl">
-      <div class="hero-img-badge">
-        <div class="save">Spare jetzt</div>
-        <div class="amount">–80 €</div>
+        <div class="hero-stat"><div class="val">3–4</div><div class="lbl">Werktage Lieferung</div></div>
       </div>
     </div>
   </div>
@@ -432,7 +421,7 @@ html{scroll-behavior:smooth}
       <div class="usp-icon">
         <svg viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
       </div>
-      <div class="usp-text"><strong>Kostenloser Versand</strong><span>Lieferung in 4–5 Werktagen</span></div>
+      <div class="usp-text"><strong>Kostenloser Versand</strong><span>Lieferung in 3–4 Werktagen</span></div>
     </div>
     <div class="usp-item">
       <div class="usp-icon">
@@ -440,26 +429,6 @@ html{scroll-behavior:smooth}
       </div>
       <div class="usp-text"><strong>30 Tage Rückgabe</strong><span>Problemlose Retoure</span></div>
     </div>
-  </div>
-</div>
-
-<!-- KATEGORIEN -->
-<div class="section">
-  <div class="section-head">
-    <h2 class="section-title">Kategorien entdecken</h2>
-    <a href="#produkte" class="section-link">Alle anzeigen →</a>
-  </div>
-  <div class="cat-grid">
-    <div class="cat-card" data-cat="eis"><div class="cat-icon">🧊</div><div class="cat-name">Eis & Slush</div><div class="cat-count">4 Artikel</div></div>
-    <div class="cat-card" data-cat="kueche"><div class="cat-icon">🍳</div><div class="cat-name">Küche</div><div class="cat-count">5 Artikel</div></div>
-    <div class="cat-card" data-cat="friteusen"><div class="cat-icon">🍟</div><div class="cat-name">Heißluftfritteusen</div><div class="cat-count">9 Artikel</div></div>
-    <div class="cat-card" data-cat="wohnen"><div class="cat-icon">🏠</div><div class="cat-name">Haushalt & Garten</div><div class="cat-count">2 Artikel</div></div>
-    <div class="cat-card" data-cat="haar"><div class="cat-icon">💨</div><div class="cat-name">Haarpflege</div><div class="cat-count">2 Artikel</div></div>
-    <div class="cat-card" data-cat="reinigung"><div class="cat-icon">🧹</div><div class="cat-name">Reinigung & Luft</div><div class="cat-count">3 Artikel</div></div>
-    <div class="cat-card" data-cat="klima"><div class="cat-icon">🌬️</div><div class="cat-name">Ventilatoren</div><div class="cat-count">2 Artikel</div></div>
-    <div class="cat-card" data-cat="technik"><div class="cat-icon">💻</div><div class="cat-name">Computer & Technik</div><div class="cat-count">3 Artikel</div></div>
-    <div class="cat-card" data-cat="auto"><div class="cat-icon">🚗</div><div class="cat-name">Auto</div><div class="cat-count">1 Artikel</div></div>
-    <div class="cat-card" data-cat="gesundheit"><div class="cat-icon">💪</div><div class="cat-name">Gesundheit</div><div class="cat-count">3 Artikel</div></div>
   </div>
 </div>
 
@@ -689,7 +658,7 @@ html{scroll-behavior:smooth}
       <div class="product-body">
         <div class="product-brand">Shark</div>
         <div class="product-name">HP072EU NeverChange Luftreiniger Compact Pro bis 23 m²</div>
-        <div class="product-desc">eBay • • • • Der Shark HP072EU NeverChange Luftreiniger Compact Pro ist die ideale Lösung für ein sauberes Zuhause.</div>
+        <div class="product-desc">Der Shark HP072EU NeverChange Luftreiniger Compact Pro ist die ideale Lösung für ein sauberes Zuhause.</div>
 
         <div class="product-prices">
           <span class="price-now">89,99 €</span>
@@ -1148,7 +1117,7 @@ html{scroll-behavior:smooth}
     <div class="deal-timer">
       <div class="timer-unit"><div class="t-num">0€</div><div class="t-lbl">Versand</div></div>
       <div class="timer-unit"><div class="t-num">30</div><div class="t-lbl">Tage Rückgabe</div></div>
-      <div class="timer-unit"><div class="t-num">4–5</div><div class="t-lbl">Werktage</div></div>
+      <div class="timer-unit"><div class="t-num">3–4</div><div class="t-lbl">Werktage</div></div>
     </div>
     <a href="#produkte" class="deal-cta">Zu den Angeboten →</a>
   </div>
@@ -1160,7 +1129,8 @@ html{scroll-behavior:smooth}
     <h2 class="section-title">Partner-Empfehlung</h2>
     <span class="ad-label">Werbung · Partnerlink*</span>
   </div>
-  <a class="partner-card no-img" href="https://temu.to/k/e7x24gpa12q" target="_blank" rel="sponsored nofollow noopener">
+  <a class="partner-card" href="https://temu.to/k/e7x24gpa12q" target="_blank" rel="sponsored nofollow noopener">
+    <div class="partner-img"><img src="img/partner-staubsauger.jpg" alt="Freistehender Akku-Staubsauger, 46 kPa" loading="lazy"></div>
     <div class="partner-info">
       <div class="product-brand">über Temu</div>
       <h3>Freistehender Akku-Staubsauger — 46 kPa Saugleistung, beutellos</h3>
@@ -1170,7 +1140,8 @@ html{scroll-behavior:smooth}
     </div>
   </a>
 
-  <a class="partner-card no-img" href="https://temu.to/k/e5pzllg6b1t" target="_blank" rel="sponsored nofollow noopener">
+  <a class="partner-card" href="https://temu.to/k/e5pzllg6b1t" target="_blank" rel="sponsored nofollow noopener">
+    <div class="partner-img"><img src="img/partner-schminktisch.jpg" alt="Schminktisch mit großem Spiegel und Föhnhalter" loading="lazy"></div>
     <div class="partner-info">
       <div class="product-brand">über Temu</div>
       <h3>Schminktisch mit großem Spiegel — inkl. Föhnhalter</h3>
@@ -1201,10 +1172,11 @@ html{scroll-behavior:smooth}
   <div class="newsletter-inner">
     <h2>Bleib immer auf dem Laufenden</h2>
     <p>Neue Angebote und Preissenkungen direkt in dein Postfach — kein Spam, jederzeit abmeldbar.</p>
-    <div class="nl-form">
-      <input type="email" placeholder="Deine E-Mail-Adresse">
-      <button type="button">Abonnieren</button>
-    </div>
+    <form class="nl-form" id="nlForm" novalidate>
+      <input type="email" id="nlEmail" placeholder="Deine E-Mail-Adresse" required>
+      <button type="submit">Abonnieren</button>
+    </form>
+    <p class="nl-msg" id="nlMsg" hidden></p>
   </div>
 </div>
 
@@ -1419,9 +1391,10 @@ document.querySelectorAll('.wish-btn').forEach(btn=>{
 })();
 
 /* ══════ Kategoriefilter ══════
-   Die Kacheln oben waren bisher reine Dekoration — anklickbar aussehend, aber
-   ohne Wirkung. Das ist schlimmer als gar keine Kacheln: wer klickt und nichts
-   passiert, haelt die Seite fuer kaputt.
+   Frueher gab es zwei Kategorie-Bereiche: die kleine Leiste unterm Header und
+   ein grosses Kachelraster darunter. Das Raster nahm viel Platz fuer wenig
+   Nutzen weg, deshalb filtert jetzt allein die kleine Leiste — kompakter,
+   gleiche Funktion.
 
    Suche und Kategorie teilen sich dasselbe `hidden` an den Karten. Statt beide
    Zustaende zu verrechnen, loescht der eine den anderen: eine Kategorie zu
@@ -1430,24 +1403,21 @@ document.querySelectorAll('.wish-btn').forEach(btn=>{
    Ergebnissen, die niemand sich erklaeren kann. */
 (function(){
   const grid=document.querySelector('#produkte .product-grid');
-  const kacheln=[...document.querySelectorAll('.cat-card[data-cat]')];
+  const links=[...document.querySelectorAll('.nav-link[data-cat]')];
   const suchfeld=document.getElementById('searchInput');
   const kopf=document.querySelector('#produkte .section-title');
-  if(!grid||!kacheln.length||!kopf)return;
+  if(!grid||!links.length||!kopf)return;
 
   const karten=[...grid.querySelectorAll('.product-card')];
   const urspruenglich=kopf.textContent;
 
-  const zuruecksetzen=document.createElement('button');
-  zuruecksetzen.type='button';
-  zuruecksetzen.className='cat-reset';
-  zuruecksetzen.textContent='Alle Produkte zeigen';
-  kopf.parentNode.insertBefore(zuruecksetzen,kopf.nextSibling);
+  function aktivSetzen(key){
+    links.forEach(l=>l.classList.toggle('active',(l.dataset.cat||'')===key));
+  }
 
   function alleZeigen(){
     karten.forEach(c=>{c.hidden=false});
-    kacheln.forEach(k=>k.classList.remove('active'));
-    zuruecksetzen.classList.remove('show');
+    aktivSetzen('');
     kopf.textContent=urspruenglich;
   }
 
@@ -1464,28 +1434,60 @@ document.querySelectorAll('.wish-btn').forEach(btn=>{
       c.hidden=!passt;
       if(passt)treffer++;
     });
-    kacheln.forEach(k=>k.classList.toggle('active',k.dataset.cat===key));
-    zuruecksetzen.classList.add('show');
+    aktivSetzen(key);
     kopf.textContent=label+' ('+treffer+')';
     document.getElementById('produkte').scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  kacheln.forEach(k=>{
-    k.addEventListener('click',()=>{
-      // Zweiter Klick auf dieselbe Kachel hebt den Filter wieder auf.
-      if(k.classList.contains('active')){alleZeigen();return}
-      filtern(k.dataset.cat,k.querySelector('.cat-name').textContent);
+  links.forEach(l=>{
+    l.addEventListener('click',(e)=>{
+      e.preventDefault(); // sonst springt die Seite zusaetzlich per href
+      const key=l.dataset.cat||'';
+      if(!key||l.classList.contains('active')){alleZeigen();return}
+      const label=l.textContent.replace(/^[^\wÄÖÜäöü]+/u,'').trim();
+      filtern(key,label);
     });
   });
-
-  zuruecksetzen.addEventListener('click',alleZeigen);
 
   // Sucht jemand, verliert die Kategorie ihre Gueltigkeit.
   const suchknopf=document.getElementById('searchBtn');
   if(suchknopf)suchknopf.addEventListener('click',()=>{
-    kacheln.forEach(k=>k.classList.remove('active'));
-    zuruecksetzen.classList.remove('show');
+    aktivSetzen('');
     kopf.textContent=urspruenglich;
+  });
+})();
+
+/* ══════ Newsletter ══════
+   Der Shop ist statisch (GitHub Pages) — kein Server, der eine Adresse
+   entgegennehmen und speichern koennte. Der Knopf tat bisher gar nichts,
+   und das ist schlimmer als kein Formular: er taeuscht eine Funktion vor,
+   die es nicht gibt. Jetzt oeffnet er einen vorausgefuellten Mail-Entwurf
+   ans Postfach des Betreibers — die einzige Zustellung, die ohne eigenes
+   Backend ehrlich funktioniert, statt eine Adresse ins Leere zu schicken. */
+(function(){
+  const form=document.getElementById('nlForm');
+  const feld=document.getElementById('nlEmail');
+  const msg=document.getElementById('nlMsg');
+  if(!form||!feld||!msg)return;
+
+  form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const wert=feld.value.trim();
+    const gueltig=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(wert);
+    feld.classList.toggle('err',!gueltig);
+    if(!gueltig){
+      msg.hidden=false;
+      msg.className='nl-msg err';
+      msg.textContent='Bitte gib eine gültige E-Mail-Adresse ein.';
+      return;
+    }
+    const betreff=encodeURIComponent('Newsletter-Anmeldung');
+    const text=encodeURIComponent('Bitte trage mich in den Newsletter ein: '+wert);
+    window.location.href='mailto:hr.ahmadov@mail.ru?subject='+betreff+'&body='+text;
+    msg.hidden=false;
+    msg.className='nl-msg';
+    msg.textContent='Dein E-Mail-Programm öffnet sich gleich — einfach abschicken, um dich anzumelden.';
+    form.reset();
   });
 })();
 </script>
